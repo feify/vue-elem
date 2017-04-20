@@ -18,13 +18,25 @@ let router = new VueRouter({
 // 配置路由
 router.map({
   '/goods': {
+    name: 'goods',
+    title: '饿了吗-商品',
     component: goods
   },
   '/ratings': {
+    name: 'ratings',
+    title: '饿了吗-评论',
     component: ratings
   },
   '/seller': {
+    name: 'seller',
+    title: '饿了吗-商家',
     component: seller
+  }
+});
+
+router.afterEach(function (transition) {
+  if (transition.to.title) {
+    document.title = transition.to.title;
   }
 });
 
